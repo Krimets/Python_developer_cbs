@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>Python</ID>
+  <OriginalElement>#/Users/akrimets/Pyprojects/Python_developer_cbs/py_essential/Homework 2/task_1.py</OriginalElement>
+  <nodes>
+    <node x="223.26283387933347" y="608.1541472937937">typing.Hashable</node>
+    <node x="-77.9123832814696" y="-13.752908252352256">object</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="object" target="typing.Hashable" relationship="REALIZATION">
+      <point x="152.5" y="280.0" />
+      <point x="-67.17521716080307" y="-26.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.001187648456057" showDependencies="false" x="161.4999999999999" y="407.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+</Diagram>
+
