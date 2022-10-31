@@ -1,0 +1,30 @@
+# Завдання 4
+# Опишіть свій клас винятку. Напишіть функцію, яка викидатиме цей виняток, якщо користувач введе певне значення, і
+# перехопіть цей виняток під час виклику функції.
+
+counter = 0
+counter2 = 0
+s = []
+
+
+class UserException(Exception):
+    def __init__(self, text):
+        self.text = text
+
+
+while len(s) < 5:
+    try:
+        a = int(input('Введіть значення '))
+        if a < 0:
+            counter += 1
+            raise UserException('Значення негативне')
+        s.append(a)
+    except UserException as e:
+        print(e)
+    except:
+        counter2 += 1
+        print("Помилка вводу данних")
+    finally:
+        print('\nВаш список:', s)
+        print('Негативних значень:', counter)
+        print('Помилок вводу:', counter2)
