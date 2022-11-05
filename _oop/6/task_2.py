@@ -67,7 +67,7 @@ class MyList(object):
                 index_counter += 1
                 index = index.next
         except:
-            print("Такого індексу не має в списку")
+            print("Такого индекса нет в списке")
 
     #  Метод очистки списка
     def clear(self):
@@ -78,7 +78,7 @@ class MyList(object):
     #  Метод вставки значения по индексу
     def insert_index(self, ind, data):
         if self._head is None:
-            print("Список пустий")
+            print("Список пуст")
             return
         else:
             index = self._head
@@ -90,12 +90,12 @@ class MyList(object):
                     index_counter += 1
                     index = index.next
             except:
-                print("Такого індексу не має в списку")
+                print("Такого индекса нет в списке")
 
     #  Метод вставки значения после определенного значения
     def in_after_item(self, x, data):
         if self._head is None:
-            print("Список пустий")
+            print("Список пуст")
             return
         else:
             n = self._head
@@ -104,7 +104,7 @@ class MyList(object):
                     break
                 n = n.next
             if n is None:
-                print("item not in the list")
+                print("Значения нет в списке")
             else:
                 new_node = MyList._ListNode(data)
                 new_node.prev = n
@@ -116,7 +116,7 @@ class MyList(object):
     #  Метод удаления значения с конца
     def dell_end(self):
         if self._head is None:
-            print("The list has no element to delete")
+            print("Список пуст")
             return
         if self._head.next is None:
             self._head = None
