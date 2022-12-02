@@ -22,7 +22,7 @@ class Db:
         self.exp = 0
 
     def connection(self):
-        self.conn = sqlite3.connect('db.sqlite3')  # (':memory:') #
+        self.conn = sqlite3.connect('db.sqlite3')
         self.cursor = self.conn.cursor()
 
     def end_connection(self):
@@ -34,9 +34,11 @@ class Db:
             self.connection()
             self.cursor.execute("""SELECT * from exp""")
             total_rows = self.cursor.fetchall()
-            print("All data: ", total_rows[0])
+            print("All data: ", total_rows)
         except sqlite3.Error as e:
             print(f"Error: {e}")
+        except BaseException as base:
+            print(f"Error: {base}. db is empty")
         finally:
             self.end_connection()
 
@@ -71,22 +73,23 @@ class Db:
         try:
             self.conn.execute(
                 """CREATE TABLE exp (
-                       id INTEGER PRIMARY KEY,
-                       destination NOT NULL,
-                       amount NOT NULL,
-                       timex NOT NULL
+                       id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                       destination TEXT NOT NULL,
+                       amount INTEGER NOT NULL,
+                       time NOT NULL
                )""")
             print('db created')
+            self.conn.commit()
         except sqlite3.Error as e:
             print(f"not created because: {e}")
         finally:
             self.end_connection()
 
-    def add_to_db(self, id, destination, amount, timex):
+    def add_to_db(self, destination, amount, time):
         try:
             self.connection()
             sqlite_query = '''INSERT INTO exp
-                    (id, destination, amount, timex) VALUES ("%s", "%s", "%s", "%s")''' % (id, destination, amount, timex)
+                    (destination, amount, time) VALUES ("%s", "%s", "%s")''' % (destination, amount, time)
             self.cursor.execute(sqlite_query)
             self.conn.commit()
             print('done')
@@ -112,7 +115,7 @@ if __name__ == '__main__':
             case '1':
                 my_db.create_db()
             case '2':
-                my_db.add_to_db(input('id?\n>>> '), input('profit|expense?\n>>> '),
+                my_db.add_to_db(input('profit|expense?\n>>> '),
                                 input('How much?\n>>> '), input('day\n>>> '))
             case '3':
                 my_db.total_exp()
