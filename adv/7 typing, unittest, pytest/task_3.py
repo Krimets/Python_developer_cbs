@@ -22,20 +22,20 @@ import smtplib
 
 
 class User:
-    def __init__(self, surname, name, otchestvo, birthday, mail):
+    def __init__(self, surname, name, patronymic, birthday, mail):
         self.cursor = None
         self.conn = None
         self.name = name
         self.surname = surname
-        self.otchestvo = otchestvo
+        self.patronymic = patronymic
         self.birthday = birthday
         self.mail = mail
 
     def get_full_name(self):
-        return f'{self.surname} {self.name} {self.otchestvo}'
+        return f'{self.surname} {self.name} {self.patronymic}'
 
     def get_short_name(self):
-        return f'{self.surname} {self.name[0]}. {self.otchestvo[0]}.'
+        return f'{self.surname} {self.name[0]}. {self.patronymic[0]}.'
 
     def get_age(self):
         now = datetime.datetime.now().year
@@ -61,7 +61,7 @@ class User:
                        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                        surname TEXT NOT NULL,
                        name TEXT NOT NULL,
-                       otchestvo TEXT NOT NULL,
+                       patronymic TEXT NOT NULL,
                        birthday INTEGER NOT NULL,
                        mail TEXT NOT NULL
                )""")
@@ -76,8 +76,8 @@ class User:
         try:
             self.connection()
             sqlite_query = '''INSERT INTO USERS
-                (surname, name, otchestvo, birthday, mail) VALUES 
-                ("%s", "%s", "%s", "%s", "%s")''' % (self.surname, self.name, self.otchestvo, self.birthday, self.mail)
+                (surname, name, patronymic, birthday, mail) VALUES 
+                ("%s", "%s", "%s", "%s", "%s")''' % (self.surname, self.name, self.patronymic, self.birthday, self.mail)
             self.cursor.execute(sqlite_query)
             self.conn.commit()
             print('Done')
