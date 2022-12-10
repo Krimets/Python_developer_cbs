@@ -19,4 +19,5 @@ class UserTestCase(unittest.TestCase):
 
     def test_test_function_wrong(self):
         value = 100
-        self.assertNotEqual(test_function(value), value * 30)
+        self.assertEqual(test_function(value), value * 30)
+        # self.assertNotEqual(test_function(value), value * 30)
