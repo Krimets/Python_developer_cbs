@@ -156,7 +156,7 @@ def user_search(user):
     user.user_search_method()
 
 
-u = User('Вокозм', 'Василь', 'Федорович', 2000, 'mzoch@gmail.com')
+u = User('Вокозм', 'Василь', 'Федорович', 2000, 'vokozm@gmail.com')
 u.create_db()
 print(u.get_full_name())
 print(u.get_short_name())
